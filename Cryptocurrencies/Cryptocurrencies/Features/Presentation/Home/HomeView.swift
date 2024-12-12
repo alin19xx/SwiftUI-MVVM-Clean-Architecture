@@ -13,9 +13,9 @@ enum ListType: String {
 }
 
 struct HomeView: View {
-    @Environment(\.modelContext) var modelContext
-    
     @StateObject private var viewModel = HomeViewModel.createDefault()
+    @State private var selectedCrypto: CryptoModel?
+    @State private var showDetail: Bool = false
     
     var body: some View {
         NavigationView {
@@ -31,9 +31,6 @@ struct HomeView: View {
                         contentListView(type: .all,
                                         data: $viewModel.cryptocurrencies)
                     }
-                    .toolbar {
-                        EditButton()
-                    }
                 }
             }
             .navigationTitle("Cryptocurrencies")
@@ -41,47 +38,37 @@ struct HomeView: View {
                 await viewModel.loadCryptocurrencies()
             }
         }
+        .sheet(item: $selectedCrypto) { crypto in
+            DetailView(crypto: crypto)
+                .presentationDetents([.fraction(0.85)])
+        }
     }
+    
     
     // MARK: - Accessory views
     
     @ViewBuilder
     private func contentListView(type: ListType, data: Binding<[CryptoModel]>) -> some View {
         Section(header: Text(type.rawValue)) {
-            switch type {
-            case .all:
-                ForEach(data.indices, id: \.self) { index in
-                    CryptoRowView(crypto: data[index], onSelect: {
-                        
-                    })
-                    .transition(.slide)
-                    .contextMenu {
-                        Button(action: {
-                            withAnimation {
-                                viewModel.toggleFavorite(crypto: data[index].wrappedValue) { }
-                            }
-                        }) {
-                            getFavoriteIcon(isFav: data[index].isFavorite.wrappedValue)
-                        }
+            cryptoListSection(data: data)
+        }
+    }
+
+    @ViewBuilder
+    private func cryptoListSection(data: Binding<[CryptoModel]>) -> some View {
+        ForEach(data.indices, id: \.self) { index in
+            CryptoRowView(crypto: data[index], onSelect: {
+                selectedCrypto = data[index].wrappedValue
+            })
+            .transition(.slide)
+            .contextMenu {
+                Button(action: {
+                    withAnimation {
+                        viewModel.toggleFavorite(crypto: data[index].wrappedValue) { }
                     }
+                }) {
+                    getFavoriteIcon(isFav: data[index].isFavorite.wrappedValue)
                 }
-            case .favorites:
-                ForEach(data.indices, id: \.self) { index in
-                    CryptoRowView(crypto: data[index], onSelect: {
-                        
-                    })
-                    .transition(.slide)
-                    .contextMenu {
-                        Button(action: {
-                            withAnimation {
-                                viewModel.toggleFavorite(crypto: data[index].wrappedValue) { }
-                            }
-                        }) {
-                            getFavoriteIcon(isFav: data[index].isFavorite.wrappedValue)
-                        }
-                    }
-                }
-                .onMove(perform: viewModel.moveFavorites)
             }
         }
     }
@@ -100,7 +87,4 @@ struct HomeView: View {
 
 #Preview {
     HomeView()
-        .modelContainer(for: [
-            CryptoModel.self
-        ], inMemory: true)
 }

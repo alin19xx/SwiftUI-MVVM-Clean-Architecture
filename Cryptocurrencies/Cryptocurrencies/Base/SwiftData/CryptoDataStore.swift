@@ -1,22 +1,22 @@
 //
-//  CryptoLocalListRepository.swift
+//  CryptoDataStore.swift
 //  Cryptocurrencies
 //
-//  Created by Alex Lin Segarra on 11/12/24.
+//  Created by Alex Lin Segarra on 12/12/24.
 //
 
 import Foundation
 import SwiftData
 
 @MainActor
-protocol CryptoLocalListRepositoryProtocol {
-    func fetchCryptoFavList() -> [CryptoModel]
-    func addCrypto(_ cryptocurrency: CryptoModel)
-    func removeCrypto(_ cryptocurrency: CryptoModel)
+protocol CryptoDataStoreProtocol {
+    func fetchFavCryptos() -> [CryptoModel]
+    func insertCrypto(_ cryptocurrency: CryptoModel)
+    func deleteCrypto(_ cryptocurrency: CryptoModel)
 }
 
 @MainActor
-class CryptoLocalListRepository: CryptoLocalListRepositoryProtocol {
+class CryptoDataStore: CryptoDataStoreProtocol {
     private let persistenceManager: PersistenceManagerProtocol
     
     init(persistenceManager: PersistenceManagerProtocol) {
@@ -27,22 +27,21 @@ class CryptoLocalListRepository: CryptoLocalListRepositoryProtocol {
         let defaultManager = SwiftDataPersistenceManager(modelContext: GlobalModelContainer.shared.mainContext)
         self.init(persistenceManager: defaultManager)
     }
-
-    func fetchCryptoFavList() -> [CryptoModel] {
+    
+    func fetchFavCryptos() -> [CryptoModel] {
         do {
             return try persistenceManager.fetch(FetchDescriptor<CryptoModel>())
         } catch {
-            print("Error fetching data: \(error.localizedDescription)")
             return []
         }
     }
 
-    func addCrypto(_ cryptocurrency: CryptoModel) {
+    func insertCrypto(_ cryptocurrency: CryptoModel) {
         persistenceManager.insert(cryptocurrency)
         save()
     }
 
-    func removeCrypto(_ cryptocurrency: CryptoModel) {
+    func deleteCrypto(_ cryptocurrency: CryptoModel) {
         persistenceManager.delete(cryptocurrency)
         save()
     }

@@ -14,35 +14,35 @@ class HomeViewModel: ObservableObject {
     @Published var favoriteCryptocurrencies: [CryptoModel] = []
     @Published var isLoading = false
     
-    private let cryptoService: CryptoListRepositoryProtocol
-    private let cryptoStore: CryptoLocalListRepositoryProtocol
+    private let cryptoUseCase: CryptoListUseCaseProtocol
+    private let cryptoStore: CryptoDataStoreProtocol
     
     private init(
-        cryptoService: CryptoListRepositoryProtocol,
-        cryptoStore: CryptoLocalListRepositoryProtocol
+        cryptoUseCase: CryptoListUseCaseProtocol,
+        cryptoStore: CryptoDataStoreProtocol
     ) {
-        self.cryptoService = cryptoService
+        self.cryptoUseCase = cryptoUseCase
         self.cryptoStore = cryptoStore
     }
 
     static func createDefault() -> HomeViewModel {
-        let cryptoService = CryptoListRepository()
-        let cryptoStore = CryptoLocalListRepository()
-        return HomeViewModel(cryptoService: cryptoService, cryptoStore: cryptoStore)
+        let cryptoUseCase = CryptoListUseCase()
+        let cryptoStore = CryptoDataStore()
+        return HomeViewModel(cryptoUseCase: cryptoUseCase, cryptoStore: cryptoStore)
     }
     
     func loadCryptocurrencies() async {
         isLoading = true
         
         do {
-            let cryptos = try await cryptoService.fetchCryptocurrencies()
-            let savedCryptos = cryptoStore.fetchCryptoFavList()
+            let cryptos = try await cryptoUseCase.execute()
+            let savedCryptos = cryptoStore.fetchFavCryptos()
             
             let allCryptos = cryptos.map { crypto -> CryptoModel in
                 if let savedCrypto = savedCryptos.first(where: { $0.id == crypto.id }) {
                     return savedCrypto
                 } else {
-                    return CryptoModel(crypto: crypto)
+                    return crypto
                 }
             }
             
@@ -60,14 +60,14 @@ class HomeViewModel: ObservableObject {
         updatedCrypto.isFavorite.toggle()
         
         if updatedCrypto.isFavorite {
-            cryptoStore.addCrypto(updatedCrypto)
+            cryptoStore.insertCrypto(updatedCrypto)
             
             if let index = cryptocurrencies.firstIndex(where: { $0.id == updatedCrypto.id }) {
                 cryptocurrencies.remove(at: index)
                 favoriteCryptocurrencies.append(updatedCrypto)
             }
         } else {
-            cryptoStore.removeCrypto(updatedCrypto)
+            cryptoStore.deleteCrypto(updatedCrypto)
             
             if let index = favoriteCryptocurrencies.firstIndex(where: { $0.id == updatedCrypto.id }) {
                 favoriteCryptocurrencies.remove(at: index)

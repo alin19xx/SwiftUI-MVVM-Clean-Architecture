@@ -9,16 +9,23 @@ import Foundation
 
 enum CryptoRepositoryError: Error {
     case invalidURL
-    case decodingError(Error)
-    case networkError(Error)
-}
-
-private func handleError(_ error: Error) -> Error {
-    if let urlError = error as? URLError {
-        return CryptoRepositoryError.networkError(urlError)
-    } else if let decodingError = error as? DecodingError {
-        return CryptoRepositoryError.decodingError(decodingError)
-    } else {
-        return error
+    case decodingError(DecodingError)
+    case networkError(URLError)
+    case invalidResponse
+    case unknownError(Error)
+    
+    var localizedDescription: String {
+        switch self {
+        case .invalidURL:
+            return "The URL is invalid."
+        case .decodingError(let error):
+            return "Failed to decode the response: \(error.localizedDescription)"
+        case .networkError(let error):
+            return "Network error occurred: \(error.localizedDescription)"
+        case .invalidResponse:
+            return "The server response was invalid."
+        case .unknownError(let error):
+            return "An unknown error occurred: \(error.localizedDescription)"
+        }
     }
 }

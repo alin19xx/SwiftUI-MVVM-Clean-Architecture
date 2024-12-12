@@ -54,7 +54,7 @@ struct CryptoRowView: View {
     
     @ViewBuilder
     private var priceText: some View {
-        let price = crypto.quotePriceUSD
+        let price = crypto.price
         if price >= 1000 {
             Text("$\(price, specifier: "%.0f")")
         } else {
@@ -64,7 +64,7 @@ struct CryptoRowView: View {
 
     @ViewBuilder
     private var percentChangeText: some View {
-        let percentChange = crypto.quotePercentChange1hUSD
+        let percentChange = crypto.percentChange24h
         Text("(\(percentChange, specifier: "%+.2f")%)")
             .foregroundColor(percentChange > 0 ? .green : .red)
     }
@@ -90,10 +90,22 @@ struct CryptoRowView: View {
 
 
 #Preview {
-    CryptoRowView(crypto: .constant(CryptoModel(crypto: CryptoDecodable(id: 12,
-                                                                        name: "Ethereum",
-                                                                        symbol: "ETH",
-                                                                        logoUrl: nil,
-                                                                        quote: ["USD": QuoteDecodable(price: 2000,
-                                                                                                      percentChange1h: 0.5)]))), onSelect: {})
+    CryptoRowView(crypto: .constant(CryptoModel(
+        id: 12,
+        name: "Ethereum",
+        symbol: "ETH",
+        logoUrl: nil,
+        desc: "Ethereum is a decentralized platform that enables smart contracts and decentralized applications (dApps).",
+        website: ["https://ethereum.org"],
+        technicalDoc: ["https://ethereum.org/en/whitepaper/"],
+        explorer: ["https://etherscan.io"],
+        price: 2000.0,
+        volume24h: 1000000.0,
+        volumeChange24h: 5.0,
+        percentChange1h: 0.5,
+        percentChange24h: 2.3,
+        percentChange7d: 10.0,
+        marketCap: 200000000.0,
+        isFavorite: false
+    )), onSelect: {})
 }

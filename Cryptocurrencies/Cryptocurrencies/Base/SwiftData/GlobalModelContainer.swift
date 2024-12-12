@@ -10,11 +10,11 @@ import SwiftData
 
 class GlobalModelContainer {
     static let shared: ModelContainer = {
-        
         let schema = Schema([
-            CryptoModel.self,
+            CryptoModel.self, URLModel.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        let isPreview = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: isPreview)
         
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
