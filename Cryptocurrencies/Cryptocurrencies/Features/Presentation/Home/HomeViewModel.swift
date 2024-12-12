@@ -17,7 +17,7 @@ class HomeViewModel: ObservableObject {
     private let cryptoUseCase: CryptoListUseCaseProtocol
     private let cryptoStore: CryptoDataStoreProtocol
     
-    private init(
+    init(
         cryptoUseCase: CryptoListUseCaseProtocol,
         cryptoStore: CryptoDataStoreProtocol
     ) {

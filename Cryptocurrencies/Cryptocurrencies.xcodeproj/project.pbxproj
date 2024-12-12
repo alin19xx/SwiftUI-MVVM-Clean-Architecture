@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C79263762D0B1DA100C2912E /* CryptoListUseCaseSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79263752D0B1DA100C2912E /* CryptoListUseCaseSuccessMock.swift */; };
+		C79263782D0B1E3D00C2912E /* CryptoListUseCaseFailureMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79263772D0B1E3D00C2912E /* CryptoListUseCaseFailureMock.swift */; };
+		C792637B2D0B1EE300C2912E /* HomeViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792637A2D0B1EE300C2912E /* HomeViewModelTest.swift */; };
+		C792637E2D0B1FDE00C2912E /* CryptoDataStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = C792637D2D0B1FDE00C2912E /* CryptoDataStoreMock.swift */; };
 		C79B74FD2D09871900DA5161 /* CryptocurrenciesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B74FC2D09871900DA5161 /* CryptocurrenciesApp.swift */; };
 		C79B75032D09871B00DA5161 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79B75022D09871B00DA5161 /* Assets.xcassets */; };
 		C79B75062D09871B00DA5161 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C79B75052D09871B00DA5161 /* Preview Assets.xcassets */; };
-		C79B75102D09871B00DA5161 /* CryptocurrenciesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B750F2D09871B00DA5161 /* CryptocurrenciesTests.swift */; };
 		C79B751A2D09871B00DA5161 /* CryptocurrenciesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B75192D09871B00DA5161 /* CryptocurrenciesUITests.swift */; };
 		C79B751C2D09871B00DA5161 /* CryptocurrenciesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B751B2D09871B00DA5161 /* CryptocurrenciesUITestsLaunchTests.swift */; };
 		C79B75302D098EA400DA5161 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B752F2D098EA400DA5161 /* HomeView.swift */; };
@@ -59,12 +62,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C79263752D0B1DA100C2912E /* CryptoListUseCaseSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListUseCaseSuccessMock.swift; sourceTree = "<group>"; };
+		C79263772D0B1E3D00C2912E /* CryptoListUseCaseFailureMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListUseCaseFailureMock.swift; sourceTree = "<group>"; };
+		C792637A2D0B1EE300C2912E /* HomeViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTest.swift; sourceTree = "<group>"; };
+		C792637D2D0B1FDE00C2912E /* CryptoDataStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoDataStoreMock.swift; sourceTree = "<group>"; };
 		C79B74F92D09871900DA5161 /* Cryptocurrencies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cryptocurrencies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79B74FC2D09871900DA5161 /* CryptocurrenciesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrenciesApp.swift; sourceTree = "<group>"; };
 		C79B75022D09871B00DA5161 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C79B75052D09871B00DA5161 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C79B750B2D09871B00DA5161 /* CryptocurrenciesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptocurrenciesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C79B750F2D09871B00DA5161 /* CryptocurrenciesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrenciesTests.swift; sourceTree = "<group>"; };
 		C79B75152D09871B00DA5161 /* CryptocurrenciesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptocurrenciesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C79B75192D09871B00DA5161 /* CryptocurrenciesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrenciesUITests.swift; sourceTree = "<group>"; };
 		C79B751B2D09871B00DA5161 /* CryptocurrenciesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptocurrenciesUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -121,6 +127,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C79263732D0B1D6E00C2912E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C79263742D0B1D8400C2912E /* CryptoList */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		C79263742D0B1D8400C2912E /* CryptoList */ = {
+			isa = PBXGroup;
+			children = (
+				C79263752D0B1DA100C2912E /* CryptoListUseCaseSuccessMock.swift */,
+				C79263772D0B1E3D00C2912E /* CryptoListUseCaseFailureMock.swift */,
+			);
+			path = CryptoList;
+			sourceTree = "<group>";
+		};
+		C79263792D0B1ECF00C2912E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C792637A2D0B1EE300C2912E /* HomeViewModelTest.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C792637C2D0B1FCA00C2912E /* SwiftData */ = {
+			isa = PBXGroup;
+			children = (
+				C792637D2D0B1FDE00C2912E /* CryptoDataStoreMock.swift */,
+			);
+			path = SwiftData;
+			sourceTree = "<group>";
+		};
 		C79B74F02D09871900DA5161 = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +206,6 @@
 				C79B75662D0AE57B00DA5161 /* Mocks */,
 				C79B75642D0AE51800DA5161 /* Presentation */,
 				C79B75652D0AE51F00DA5161 /* Domain */,
-				C79B750F2D09871B00DA5161 /* CryptocurrenciesTests.swift */,
 			);
 			path = CryptocurrenciesTests;
 			sourceTree = "<group>";
@@ -323,6 +361,7 @@
 		C79B75642D0AE51800DA5161 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C79263792D0B1ECF00C2912E /* Home */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -338,6 +377,8 @@
 		C79B75662D0AE57B00DA5161 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				C792637C2D0B1FCA00C2912E /* SwiftData */,
+				C79263732D0B1D6E00C2912E /* Domain */,
 				C79B75682D0AE5F200DA5161 /* Network */,
 				C79B75672D0AE58600DA5161 /* Repository */,
 				C79B75632D0AE32200DA5161 /* RawData */,
@@ -539,9 +580,12 @@
 				C79B75762D0AF12B00DA5161 /* CryptoInfoMock.swift in Sources */,
 				C79B75712D0AE89D00DA5161 /* CryptoListMock.swift in Sources */,
 				C79B756D2D0AE6F200DA5161 /* CryptoListRepositorySuccessMock.swift in Sources */,
-				C79B75102D09871B00DA5161 /* CryptocurrenciesTests.swift in Sources */,
+				C792637B2D0B1EE300C2912E /* HomeViewModelTest.swift in Sources */,
+				C792637E2D0B1FDE00C2912E /* CryptoDataStoreMock.swift in Sources */,
 				C79B756A2D0AE64100DA5161 /* NetworkClientMock.swift in Sources */,
 				C79B75742D0AEC2F00DA5161 /* CryptoListUseCaseTest.swift in Sources */,
+				C79263782D0B1E3D00C2912E /* CryptoListUseCaseFailureMock.swift in Sources */,
+				C79263762D0B1DA100C2912E /* CryptoListUseCaseSuccessMock.swift in Sources */,
 				C79B756F2D0AE70A00DA5161 /* CryptoListRepositoryFailureMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -706,6 +750,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -735,6 +780,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
