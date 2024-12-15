@@ -55,7 +55,7 @@ class HomeViewModel: ObservableObject {
     }
     
     
-    func toggleFavorite(crypto: CryptoModel, completion: @escaping () -> Void) {
+    func toggleFavorite(crypto: CryptoModel) {
         var updatedCrypto = crypto
         updatedCrypto.isFavorite.toggle()
         
@@ -75,8 +75,6 @@ class HomeViewModel: ObservableObject {
                 cryptocurrencies.sort { $0.name < $1.name }
             }
         }
-        
-        completion()
     }
     
     func moveFavorites(from source: IndexSet, to destination: Int) {

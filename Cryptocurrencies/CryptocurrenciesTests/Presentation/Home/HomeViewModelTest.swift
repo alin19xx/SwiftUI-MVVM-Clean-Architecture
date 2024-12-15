@@ -74,7 +74,7 @@ struct HomeViewModelTests {
         let cryptoToFavorite = await viewModel.cryptocurrencies.first!
         
         // WHEN
-        await viewModel.toggleFavorite(crypto: cryptoToFavorite) {}
+        await viewModel.toggleFavorite(crypto: cryptoToFavorite)
 
         // THEN
         await #expect(viewModel.favoriteCryptocurrencies.count == 1)
@@ -94,7 +94,7 @@ struct HomeViewModelTests {
         await viewModel.loadCryptocurrencies()
         
         // WHEN
-        await viewModel.toggleFavorite(crypto: favoriteCrypto) {}
+        await viewModel.toggleFavorite(crypto: favoriteCrypto)
 
         // THEN
         await #expect(viewModel.cryptocurrencies.count == 1)
