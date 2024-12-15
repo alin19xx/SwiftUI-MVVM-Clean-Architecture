@@ -28,7 +28,6 @@
 		C79B75492D09AE2C00DA5161 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B75482D09AE2C00DA5161 /* APIRequest.swift */; };
 		C79B754B2D09AE5600DA5161 /* APIConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B754A2D09AE5600DA5161 /* APIConfig.swift */; };
 		C79B754D2D09AED700DA5161 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B754C2D09AED700DA5161 /* NetworkClient.swift */; };
-		C79B754F2D09AEF000DA5161 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B754E2D09AEF000DA5161 /* NetworkError.swift */; };
 		C79B75512D09D68100DA5161 /* GlobalModelContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B75502D09D68100DA5161 /* GlobalModelContainer.swift */; };
 		C79B75542D09E34600DA5161 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B75532D09E34600DA5161 /* DetailView.swift */; };
 		C79B75592D0A048900DA5161 /* QuoteDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79B75582D0A048900DA5161 /* QuoteDecodable.swift */; };
@@ -86,7 +85,6 @@
 		C79B75482D09AE2C00DA5161 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		C79B754A2D09AE5600DA5161 /* APIConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfig.swift; sourceTree = "<group>"; };
 		C79B754C2D09AED700DA5161 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
-		C79B754E2D09AEF000DA5161 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		C79B75502D09D68100DA5161 /* GlobalModelContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModelContainer.swift; sourceTree = "<group>"; };
 		C79B75532D09E34600DA5161 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		C79B75582D0A048900DA5161 /* QuoteDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteDecodable.swift; sourceTree = "<group>"; };
@@ -317,7 +315,6 @@
 				C79B75482D09AE2C00DA5161 /* APIRequest.swift */,
 				C79B754A2D09AE5600DA5161 /* APIConfig.swift */,
 				C79B754C2D09AED700DA5161 /* NetworkClient.swift */,
-				C79B754E2D09AEF000DA5161 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -550,7 +547,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C79B755E2D0A0F8F00DA5161 /* CryptoListUseCase.swift in Sources */,
-				C79B754F2D09AEF000DA5161 /* NetworkError.swift in Sources */,
 				C79B75472D09ADF700DA5161 /* CryptoListRepositoryError.swift in Sources */,
 				C79B75542D09E34600DA5161 /* DetailView.swift in Sources */,
 				C79B75302D098EA400DA5161 /* HomeView.swift in Sources */,

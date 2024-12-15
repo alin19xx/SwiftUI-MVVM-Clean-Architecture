@@ -54,13 +54,12 @@ struct CryptoListUseCaseTests {
         #expect(details["1027"]?.urls?.website?.first == "https://www.ethereum.org/")
     }
     
-    
     @Test
-    func testFetchCryptoListingsFailure() async throws {
+    func testFetchCryptoListingsFailureMessage() async throws {
         // GIVEN
         let mockRepository = CryptoListRepositoryErrorMock(
-                    error: .networkError(URLError(.notConnectedToInternet))
-                )
+            error: .networkError(URLError(.notConnectedToInternet))
+        )
         let useCase = CryptoListUseCase(repository: mockRepository)
         
         // WHEN - THEN
@@ -71,6 +70,7 @@ struct CryptoListUseCaseTests {
             switch error {
             case .networkError(let urlError):
                 #expect(urlError.code == .notConnectedToInternet)
+                #expect(error.localizedDescription.contains("Network error occurred"))
             default:
                 throw TestError("Unexpected error case: \(error.localizedDescription)")
             }
@@ -79,14 +79,14 @@ struct CryptoListUseCaseTests {
         }
     }
     
-    /// Caso de error: Fallo al obtener detalles
     @Test
-    func testFetchCryptoInfoFailure() async throws {
+    func testFetchCryptoInfoFailureMessage() async throws {
         // GIVEN
         let mockRepository = CryptoListRepositoryErrorMock(
-                    error: .decodingError(DecodingError.dataCorrupted(
-                        .init(codingPath: [], debugDescription: "Mock decoding error")
-                    )))
+            error: .decodingError(DecodingError.dataCorrupted(
+                .init(codingPath: [], debugDescription: "Mock decoding error")
+            ))
+        )
         let useCase = CryptoListUseCase(repository: mockRepository)
         
         // WHEN - THEN
@@ -98,6 +98,7 @@ struct CryptoListUseCaseTests {
             case .decodingError(let decodingError):
                 if case .dataCorrupted(let context) = decodingError {
                     #expect(context.debugDescription == "Mock decoding error")
+                    #expect(error.localizedDescription.contains("Failed to decode the response"))
                 } else {
                     throw TestError("Unexpected decoding error: \(decodingError.localizedDescription)")
                 }

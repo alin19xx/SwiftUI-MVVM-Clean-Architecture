@@ -19,11 +19,11 @@ class NetworkClient {
             let (data, _) = try await session.data(from: url)
             return try JSONDecoder().decode(T.self, from: data)
         } catch let decodingError as DecodingError {
-            throw NetworkError.decodingError(decodingError)
+            throw CryptoRepositoryError.decodingError(decodingError)
         } catch let urlError as URLError {
-            throw NetworkError.networkError(urlError)
+            throw CryptoRepositoryError.networkError(urlError)
         } catch {
-            throw error
+            throw CryptoRepositoryError.unknownError(error)
         }
     }
 }

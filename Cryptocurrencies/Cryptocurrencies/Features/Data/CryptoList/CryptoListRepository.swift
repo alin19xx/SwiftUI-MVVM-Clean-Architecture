@@ -48,7 +48,7 @@ class CryptoListRepository: CryptoListRepositoryProtocol {
                 queryItems: [
                     URLQueryItem(name: "CMC_PRO_API_KEY", value: APIConfig.apiKey),
                     URLQueryItem(name: "id", value: idsString),
-                    URLQueryItem(name: "aux", value: "logo,description,urls") // Pedimos toda la información
+                    URLQueryItem(name: "aux", value: "logo,description,urls")
                 ]
             )
             
