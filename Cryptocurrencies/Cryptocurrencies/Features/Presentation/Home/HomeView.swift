@@ -64,7 +64,7 @@ struct HomeView: View {
             .contextMenu {
                 Button(action: {
                     withAnimation {
-                        viewModel.toggleFavorite(crypto: data[index].wrappedValue) { }
+                        viewModel.toggleFavorite(crypto: data[index].wrappedValue)
                     }
                 }) {
                     getFavoriteIcon(isFav: data[index].isFavorite.wrappedValue)
